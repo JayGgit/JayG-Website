@@ -6,7 +6,107 @@
         <script src="https://kit.fontawesome.com/990b868695.js" crossorigin="anonymous"></script>
     </head>
 
+    <style>
+        body {
+            background-color: #343434;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .cmdwindow {
+            background-color: #232323;
+            border-color: #dedede;
+            border-width: 5px;
+            border-style: solid;
+            border-radius: 5px;
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            top: 5%;
+            left: 5%;
+        }
+        .titlebar {
+            background-color: #dedede;
+            height: 5%;
+            width: 100%;
+            border-bottom-style: solid;
+            border-bottom-color: #dedede;
+            border-bottom-width: 5px;
+            text-align: right;
+        }
+        .titlebar div {
+            display: inline-block;
+            height: 100%;
+            width: 2%;
+            margin-right: 5px;
+            margin-left: 5px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .titlebar p {
+            margin-right: 80%;
+            display: inline;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: #232323
+        }
+        .titlebar i {
+            padding: 60% 0;
+        }
+        .titlebar-icons-minimize:hover {
+            background-color: #cdcdcd;
+        }
+        .titlebar-icons-resize:hover {
+            background-color: #cdcdcd;
+        }
+        .titlebar-icons-close:hover {
+            background-color: #ff2323;
+        }
+        .type {
+            margin: 10px;
+            padding: 5px;
+        }
+    </style>
+
     <body>
-        
+        <div class="cmdwindow" id="cmdwindow">
+            <div class="titlebar" id="titlebar">
+                <p>Command Prompt</p>
+                <div class="titlebar-icons-minimize">
+                    <i class="fa-solid fa-window-minimize fa-xl" id="minimizemore"></i>
+                </div>
+                <div class="titlebar-icons-resize">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center fa-lg" id="maximize"></i>
+                    <i class="fa-solid fa-down-left-and-up-right-to-center fa-lg" id="minimize"></i>
+                </div>
+                <div class="titlebar-icons-close">
+                    <i class="fa-solid fa-xmark fa-2xl" id="close"></i>
+                </div>
+            </div>
+
+            <div class="type">
+
+            </div>
+        </div>
     </body>
+    <script>
+        var maximize = document.getElementById("maximize");
+        var minimize = document.getElementById("minimize");
+
+        minimize.style.display = "none";
+
+        window.onclick = ele => {
+            var id = ele.target.id
+
+            if (id == "close"){
+                window.open("about:blank", "_self");
+            }
+            if (id = "minimizemore"){
+
+            }
+        }
+    </script>
 </html>
