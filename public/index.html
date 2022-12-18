@@ -102,6 +102,43 @@
             font-size: 3vw;
             color: #056605;
         }
+        .warn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50vw;
+            height: 45vh;
+            background-color: #dedede;
+            border-width: 3px;
+            border-color: #454545;
+            border-radius: 2px;
+            text-align: center;
+        }
+        .warn > * {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 2vw;
+        }
+        .warn a {
+            margin-inline: 5vw;
+            text-decoration: none;
+            font-size: 2vw;
+            padding: 2px;
+        }
+        .close {
+            background-color: transparent;
+            border-style: solid;
+            border-color: #343434;
+            color: #232323;
+            border-radius: 5px;
+        }
+        .gui {
+            color: #efefef;
+            background-color: #5d7de4;
+            border-color: #343434;
+            border-style: solid;
+            border-radius: 5px;
+        }
     </style>
 
     <body>
@@ -127,6 +164,15 @@
                 <p class="pretext">> </p>
                 <input type="text" class="text" id="text" autofocus>
                 <p class="caret" id="caret">0</p>
+            </div>
+
+            <div class="warn" id="warngui">
+                <h1>Hey!</h1>
+                <p>Your device looks like it could perform better on our GUI based website.</p>
+                <p>Try using the GUI instead!</p>
+                <a href="gui" class="gui">Use GUI</a>
+                <a class="close" href="javascript:hidewarn()">Close</a>
+                <p id="reason">Reason: Javascript not enabled</p>
             </div>
         </div>
     </body>
@@ -236,5 +282,22 @@
                 }
             }
         });
+        var agent = window.navigator.userAgent.toLowerCase()
+        // Maximum resolution 1440px width, below should redirect to GUI based website
+        if (screen.width < 1440){
+            document.getElementById("reason").innerHTML = "Reason: Using a mobile device, or a low screen resolution"
+        }
+        else if (agent.includes("Safari")) {
+            document.getElementById("reason").innerHTML = "Reason: Using Safari"
+        }
+        else if (window.document.documentMode){ // window.document.documentMode means user is using IE for some reason...
+            document.getElementById("reason").innerHTML = "Reason: Using Internet Explorer. Why?"
+        }
+        else {
+            document.getElementById("warngui").style.display = "none"
+        }
+        function hidewarn(){
+            document.getElementById("warngui").style.display = "none"
+        }
     </script>
 </html>
