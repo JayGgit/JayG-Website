@@ -65,9 +65,42 @@
         .titlebar-icons-close:hover {
             background-color: #ff2323;
         }
-        .type {
+        .inputdiv {
             margin: 10px;
             padding: 5px;
+        }
+        .text {
+            display: inline;
+            font-family: 'Courier New', Courier, monospace;
+            color: #056605;
+            font-size: 5vw;
+            caret-color: rgba(0, 0, 0, 0);
+            background-color: rgba(0, 0, 0, 0);
+            text-decoration: none;
+            border-color: rgba(0, 0, 0, 0);
+            outline: none;
+        }
+        .pretext {
+            display: inline;
+            font-size: 5vw;
+            font-family: 'Courier New', Courier, monospace;
+            color: #056605;
+        }
+        .caret {
+            display: inline;
+            font-size: 5vw;
+            color: #dedede;
+            background-color: #dedede;
+        }
+        .prepretext {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 3vw;
+            color: #056605;
+        }
+        .error {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 3vw;
+            color: #056605;
         }
     </style>
 
@@ -87,16 +120,36 @@
                 </div>
             </div>
 
-            <div class="type">
-
+            <div class="inputdiv">
+                <p class="prepretext">JayG Command Prompt</p>
+                <p class="prepretext">Enter your access code, project ID, or 'GITHUB' to go to my Github page.</p>
+                <p class="error" id="error"></p>
+                <p class="pretext">> </p>
+                <input type="text" class="text" id="text" autofocus>
+                <p class="caret" id="caret">0</p>
             </div>
         </div>
     </body>
     <script>
         var maximize = document.getElementById("maximize");
         var minimize = document.getElementById("minimize");
+        var input = document.getElementById("text");
+        var caret = document.getElementById("caret");
+        var errorele = document.getElementById("error");
 
         minimize.style.display = "none";
+
+        input.setAttribute('autocomplete', 'off')
+        input.setAttribute('autocorrect', 'off')
+        input.setAttribute('autocapitalize', 'off')
+        input.setAttribute('spellcheck', false)
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const error = urlParams.get('error')
+        if (error){
+            errorele.innerHTML = ("'" + decodeURI(error) + "' is not a defined command, or not a valid access code. Please try again.")
+        }
 
         window.onclick = ele => {
             var id = ele.target.id
@@ -104,9 +157,84 @@
             if (id == "close"){
                 window.open("about:blank", "_self");
             }
-            if (id = "minimizemore"){
+            if (id == "maximize"){
+                if (document.body.requestFullscreen) {
+                    document.body.requestFullscreen();
+                }
+                else if (document.body.mozRequestFullScreen) {
+                    document.body.mozRequestFullScreen();
+                }
+                else if (document.body.webkitRequestFullscreen) {
+                    document.body.webkitRequestFullscreen();
+                }
+                else if(document.body.msRequestFullscreen) {
+                    document.body.msRequestFullscreen();
+                }
 
+                maximize.style.display = "none";
+                minimize.style.display = "unset";
+            }
+            if (id == "minimize"){
+                if (document.body.requestFullscreen) {
+                    document.body.requestFullscreen();
+                }
+                else if (document.body.mozRequestFullScreen) {
+                    document.body.mozRequestFullScreen();
+                }
+                else if (document.body.webkitRequestFullscreen) {
+                    document.body.webkitRequestFullscreen();
+                }
+                else if(document.body.msRequestFullscreen) {
+                    document.body.msRequestFullscreen();
+                }
+
+                maximize.style.display = "none";
+                minimize.style.display = "unset";
+            }
+            if (id == "maximize"){
+                if(document.body.exitFullscreen) {
+                    document.body.exitFullscreen();
+                } else if (document.body.mozCancelFullScreen) {
+                    document.body.mozCancelFullScreen();
+                } else if (document.body.webkitExitFullscreen) {
+                    document.body.webkitExitFullscreen();
+                }
+            }
+            if (id == "minimizemore"){
+                document.getElementById("cmdwindow").style.display = "none"
+                // And you're stuck! You've played youself :)
             }
         }
+
+        setInterval(function(){
+            input.focus();
+
+            input.style.width = (String(Number(input.value.length) * 3 + 1) + "vw")
+        }, 100);
+
+        setInterval(function(){
+            if (caret.style.visibility == "unset"){
+                caret.style.visibility = "hidden"
+            }
+            else{
+                caret.style.visibility = "unset"
+            }
+        }, 500)
+
+        // Command prompt handling
+        document.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                var value = input.value.toLowerCase()
+                if (value == "github"){
+                    window.location.href = "https://github.com/JayGgit";
+                }
+                else if (value == "help"){
+                    window.location.href = "https://github.com/JayGgit";
+                }
+                else {
+                    window.location.href = ((location.protocol + '//' + location.host + location.pathname) + "?error=" + encodeURI(input.value))
+                }
+            }
+        });
     </script>
 </html>
