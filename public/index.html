@@ -159,7 +159,7 @@
 
             <div class="inputdiv">
                 <p class="prepretext">JayG Command Prompt</p>
-                <p class="prepretext">Enter your access code, project ID, or 'GITHUB' to go to my Github page.</p>
+                <p class="prepretext">Enter your access code, project ID, 'GITHUB', or 'DONATE'</p>
                 <p class="error" id="error"></p>
                 <p class="pretext">> </p>
                 <input type="text" class="text" id="text" autofocus>
@@ -276,6 +276,9 @@
                 }
                 else if (value == "help"){
                     window.location.href = "https://github.com/JayGgit";
+                }
+                else if (value == "donate"){
+                    window.location.href = "https://jayggit.github.io/donate"
                 }
                 else {
                     window.location.href = ((location.protocol + '//' + location.host + location.pathname) + "?error=" + encodeURI(input.value))
