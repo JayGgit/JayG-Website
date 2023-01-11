@@ -194,7 +194,12 @@
         const urlParams = new URLSearchParams(queryString);
         const error = urlParams.get('error')
         if (error){
-            errorele.innerHTML = ("'" + decodeURI(error) + "' is not a defined command, or not a valid code. Please try again.")
+            if (error == "fard"){
+                errorele.innerHTML = ("You farded")
+            }
+            else {
+                errorele.innerHTML = ("'" + decodeURI(error) + "' is not a defined command, or not a valid code. Please try again.")
+            }
         }
 
         window.onclick = ele => {
