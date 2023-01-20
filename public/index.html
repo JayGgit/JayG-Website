@@ -197,6 +197,9 @@
             if (error == "fard"){
                 errorele.innerHTML = ("You farded")
             }
+            if (error == "rkaicstlye"){
+                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+            }
             else {
                 errorele.innerHTML = ("'" + decodeURI(error) + "' is not a defined command, or not a valid code. Please try again.")
             }
@@ -284,6 +287,9 @@
                 }
                 else if (value == "donate"){
                     window.location.href = "https://jayggit.github.io/donate"
+                }
+                else if (value == "beta"){
+                    window.location.href = "https://jayggit.github.io/index0.html"
                 }
                 else {
                     window.location.href = ((location.protocol + '//' + location.host + location.pathname) + "?error=" + encodeURI(input.value))
