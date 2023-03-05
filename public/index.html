@@ -38,27 +38,6 @@
                 width: 90vw;
             }
         }
-        @keyframes wiggle {
-            0% {transform: rotate(15deg);}
-            25% {transform: rotate(-15deg);}
-            50% {transform: rotate(25deg);}
-            75% {transform: rotate(-10deg);}
-            100% {transform: rotate(0deg);}
-        }
-        @keyframes hover {
-            0% {transform: translateY(10px);}
-            25% {transform: translateY(0px);}
-            50% {transform: translateY(-10px);}
-            75% {transform: translateY(0px);}
-            100% {transform: translateY(10px);}
-        }
-        @keyframes creative {
-            0% {transform: translateX(10px);}
-            25% {transform: translateX(0px);}
-            50% {transform: translateX(-10px);}
-            75% {transform: translateX(0px);}
-            100% {transform: translateX(10px);}
-        }
 
         html {
             background-color: #5c2fff;
@@ -94,7 +73,7 @@
 
         .select p:hover, .select u {
             transition: all 500ms;
-            color: #a3d000;
+            color: #5c2fff;
         }
 
         .type {
@@ -249,31 +228,5 @@
         }
 
         loop();
-
-        var scroll1 = document.getElementById("scroll1")
-        addEventListener("mouseover", (event) => {
-            if (event.target.id == "fun"){
-                document.getElementById("fun").style.animation = "wiggle 1s step-end infinite"
-                document.getElementById("fun").firstChild.style.color = "#a3d000"
-            }
-            if (event.target.id == "cool"){
-                document.getElementById("cool").style.animation = "hover 1s step-end infinite"
-                document.getElementById("cool").firstChild.style.color = "#a3d000"
-            }
-            if (event.target.id == "creative"){
-                document.getElementById("creative").style.animation = "creative 1s step-end infinite"
-                document.getElementById("creative").firstChild.style.color = "#a3d000"
-            }
-            if (event.target.id == "professional"){
-                document.getElementById("professional").firstChild.style.color = "#a3d000"
-            }
-            if (event.target.id == "serious"){
-                document.getElementById("fun").style.webkitAnimationPlayState = "paused"
-                document.getElementById("cool").style.webkitAnimationPlayState = "paused"
-                document.getElementById("creative").style.webkitAnimationPlayState = "paused"
-                document.getElementById("professional").style.webkitAnimationPlayState = "paused"
-                document.getElementById("serious").firstChild.style.color = "#a3d000"
-            }
-        });
     </script>
 </html>
