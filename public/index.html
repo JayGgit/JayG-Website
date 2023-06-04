@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>JayG</title>
+        <title>JayG Developer</title>
     </head>
 
     <style>
@@ -11,7 +11,7 @@
         body {
             background-color: #f1f3f5;
         }
-        h1, p, a {
+        h1, h3, a {
             margin-top: 100px;
             margin-bottom: 100px;
         }
@@ -19,6 +19,7 @@
             font-family: 'Roboto', sans-serif;
             font-weight: 900;
             font-size: 500%;
+            color: #000000;
             text-align: center;
         }
         h1:hover {
@@ -34,7 +35,7 @@
         h1 b:hover {
             text-shadow: 6px 6px #1f1f1f;
         }
-        p {
+        h3 {
             font-family: 'Roboto', sans-serif;
             font-weight: 400;
             text-align: center;
@@ -58,8 +59,13 @@
             color: #1f1f1f;
             background: #ffffff;
         }
-        a:hover {
+        a:hover, a:focus {
             box-shadow: 6px 6px #dddddd;
+        }
+        a:focus {
+            outline-width: 5px;
+            outline-color: #000000;
+            outline-style: solid;
         }
         .special {
             color: #ffffff;
@@ -73,10 +79,10 @@
         
     <body>
         <h1><b>I'm JayG</b>, and I make stuff online.</h1>
-        <p>I make projects using HTML, CSS, and Javascript.</p>
+        <h3>I make projects using HTML, CSS, and Javascript.</h3>
         <div class="social">
-            <a class="special" href="https://github.com/JayGgit">Github <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-            <a href="https://twitter.com/JayGTypes">Twitter <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+            <a role="button" class="special" href="https://github.com/JayGgit">Github <svg role="presentation" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+            <a role="button" href="https://twitter.com/JayGTypes">Twitter <svg role="presentation" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
         </div>
     </body>
 </html>
