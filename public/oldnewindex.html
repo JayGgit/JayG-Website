@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Test JayG Website</title>
+    </head>
+
+    <style>
+        body {
+            background-color: #212121;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 5em;
+            color: #fefefe
+        }
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 3em;
+            color: #dedede
+        }
+        h3 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 2em;
+            color: #cdcdcd;
+        }
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5em;
+            color: #cdcdcd;
+        }
+        .command {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5em;
+            color: #232323;
+            background-color: #dedede;
+            text-decoration: none;
+            text-align: center;
+            border-color: #212121;
+            border-style: solid;
+            outline: none;
+            max-width: fit-content;
+            transition: 0.5s ease;
+            cursor: default;
+        }
+        .command:hover {
+            background-color: #212121;
+        }
+        .command:focus {
+            border-color: #dedede !important;
+            background-color: #dedede !important;
+            outline: none !important;
+        }
+        .console {
+            position: absolute;
+            left: 0px;
+            width: 100vw;
+            padding: 2vh;
+            background-color: #dedede;
+        }
+        .console h3 {
+            color: #232323;
+        }
+        .console p {
+            color: #232323;
+        }
+    </style>
+
+    <body>
+        <h1>I'm JayG</h1>
+        <h2>And I make cool things online.</h2>
+
+        <div class="console">
+            <h3>Know what you're here for?</h3>
+            <input type="text" class="command" id="command" placeholder="Type a command" onfocusin="commandFocusIn()" onfocusout="commandFocusOut()">
+        </div>
+    </body>
+
+    <script>
+        document.getElementById("command").setAttribute('size',document.getElementById("command").getAttribute('placeholder').length);
+
+        function commandFocusIn() {
+            document.getElementById("command").placeholder = ""
+        }
+        function commandFocusOut() {
+            document.getElementById("command").placeholder = "Type a command"
+        }
+    </script>
+</html>

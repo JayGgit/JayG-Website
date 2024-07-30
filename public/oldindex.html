@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>👋 Jay G</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/990b868695.js" crossorigin="anonymous"></script>
+    </head>
+
+    <style>
+        body {
+            background-color: #343434;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .cmdwindow {
+            background-color: #232323;
+            border-color: #dedede;
+            border-width: 5px;
+            border-style: solid;
+            border-radius: 5px;
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            top: 5%;
+            left: 5%;
+        }
+        .titlebar {
+            background-color: #dedede;
+            height: 5%;
+            width: 100%;
+            border-bottom-style: solid;
+            border-bottom-color: #dedede;
+            border-bottom-width: 5px;
+            text-align: right;
+        }
+        .titlebar div {
+            display: inline-block;
+            height: 100%;
+            width: 2%;
+            margin-right: 5px;
+            margin-left: 5px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .titlebar p {
+            margin-right: 80%;
+            display: inline;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: #232323
+        }
+        .titlebar i {
+            padding: 60% 0;
+        }
+        .titlebar-icons-minimize:hover {
+            background-color: #cdcdcd;
+        }
+        .titlebar-icons-resize:hover {
+            background-color: #cdcdcd;
+        }
+        .titlebar-icons-close:hover {
+            background-color: #ff2323;
+        }
+        .inputdiv {
+            margin: 10px;
+            padding: 5px;
+        }
+        .text {
+            display: inline;
+            font-family: 'Courier New', Courier, monospace;
+            color: #056605;
+            font-size: 5vw;
+            caret-color: rgba(0, 0, 0, 0);
+            background-color: rgba(0, 0, 0, 0);
+            text-decoration: none;
+            border-color: rgba(0, 0, 0, 0);
+            outline: none;
+        }
+        .pretext {
+            display: inline;
+            font-size: 5vw;
+            font-family: 'Courier New', Courier, monospace;
+            color: #056605;
+        }
+        .caret {
+            display: inline;
+            font-size: 5vw;
+            color: #dedede;
+            background-color: #dedede;
+        }
+        .prepretext {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 3vw;
+            color: #056605;
+        }
+        .error {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 3vw;
+            color: #056605;
+        }
+        .warn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50vw;
+            height: 45vh;
+            background-color: #dedede;
+            border-width: 3px;
+            border-color: #454545;
+            border-radius: 2px;
+            text-align: center;
+        }
+        .warn > * {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 2vw;
+        }
+        .warn a {
+            margin-inline: 5vw;
+            text-decoration: none;
+            font-size: 2vw;
+            padding: 2px;
+        }
+        .close {
+            background-color: transparent;
+            border-style: solid;
+            border-color: #343434;
+            color: #232323;
+            border-radius: 5px;
+        }
+        .gui {
+            color: #efefef;
+            background-color: #5d7de4;
+            border-color: #343434;
+            border-style: solid;
+            border-radius: 5px;
+        }
+    </style>
+
+    <body>
+        <div class="cmdwindow" id="cmdwindow">
+            <div class="titlebar" id="titlebar">
+                <p>Command Prompt</p>
+                <div class="titlebar-icons-minimize">
+                    <i class="fa-solid fa-window-minimize fa-xl" id="minimizemore"></i>
+                </div>
+                <div class="titlebar-icons-resize">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center fa-lg" id="maximize"></i>
+                    <i class="fa-solid fa-down-left-and-up-right-to-center fa-lg" id="minimize"></i>
+                </div>
+                <div class="titlebar-icons-close">
+                    <i class="fa-solid fa-xmark fa-2xl" id="close"></i>
+                </div>
+            </div>
+
+            <div class="inputdiv">
+                <p class="prepretext">JayG Command Prompt</p>
+                <p class="prepretext">Enter your access code, project ID, 'GITHUB', or 'DONATE'</p>
+                <p class="error" id="error"></p>
+                <p class="pretext">> </p>
+                <input type="text" class="text" id="text" autofocus>
+                <p class="caret" id="caret">0</p>
+            </div>
+
+            <div class="warn" id="warngui">
+                <h1>Hey!</h1>
+                <p>Your device looks like it could perform better on our GUI based website.</p>
+                <p>Try using the GUI instead!</p>
+                <a href="gui" class="gui">Use GUI</a>
+                <a class="close" href="javascript:hidewarn()">Close</a>
+                <p id="reason">Reason: Javascript not enabled</p>
+            </div>
+        </div>
+    </body>
+    <script>
+        var maximize = document.getElementById("maximize");
+        var minimize = document.getElementById("minimize");
+        var input = document.getElementById("text");
+        var caret = document.getElementById("caret");
+        var errorele = document.getElementById("error");
+
+        minimize.style.display = "none";
+
+        input.setAttribute('autocomplete', 'off')
+        input.setAttribute('autocorrect', 'off')
+        input.setAttribute('autocapitalize', 'off')
+        input.setAttribute('spellcheck', false)
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const error = urlParams.get('error')
+        if (error){
+            if (error == "fard"){
+                errorele.innerHTML = ("You farded")
+            }
+            if (error == "rkaicstlye"){
+                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+            }
+            else {
+                errorele.innerHTML = ("'" + decodeURI(error) + "' is not a defined command, or not a valid code. Please try again.")
+            }
+        }
+
+        window.onclick = ele => {
+            var id = ele.target.id
+
+            if (id == "close"){
+                window.open("about:blank", "_self");
+            }
+            if (id == "maximize"){
+                if (document.body.requestFullscreen) {
+                    document.body.requestFullscreen();
+                }
+                else if (document.body.mozRequestFullScreen) {
+                    document.body.mozRequestFullScreen();
+                }
+                else if (document.body.webkitRequestFullscreen) {
+                    document.body.webkitRequestFullscreen();
+                }
+                else if(document.body.msRequestFullscreen) {
+                    document.body.msRequestFullscreen();
+                }
+
+                maximize.style.display = "none";
+                minimize.style.display = "unset";
+            }
+            if (id == "minimize"){
+                if (document.body.requestFullscreen) {
+                    document.body.requestFullscreen();
+                }
+                else if (document.body.mozRequestFullScreen) {
+                    document.body.mozRequestFullScreen();
+                }
+                else if (document.body.webkitRequestFullscreen) {
+                    document.body.webkitRequestFullscreen();
+                }
+                else if(document.body.msRequestFullscreen) {
+                    document.body.msRequestFullscreen();
+                }
+
+                maximize.style.display = "none";
+                minimize.style.display = "unset";
+            }
+            if (id == "maximize"){
+                if(document.body.exitFullscreen) {
+                    document.body.exitFullscreen();
+                } else if (document.body.mozCancelFullScreen) {
+                    document.body.mozCancelFullScreen();
+                } else if (document.body.webkitExitFullscreen) {
+                    document.body.webkitExitFullscreen();
+                }
+            }
+            if (id == "minimizemore"){
+                document.getElementById("cmdwindow").style.display = "none"
+                // And you're stuck! You've played youself :)
+            }
+        }
+
+        setInterval(function(){
+            input.focus();
+
+            input.style.width = (String(Number(input.value.length) * 3 + 1) + "vw")
+        }, 100);
+
+        setInterval(function(){
+            if (caret.style.visibility == "unset"){
+                caret.style.visibility = "hidden"
+            }
+            else{
+                caret.style.visibility = "unset"
+            }
+        }, 500)
+
+        // Command prompt handling
+        document.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                var value = input.value.toLowerCase()
+                if (value == "github"){
+                    window.location.href = "https://github.com/JayGgit";
+                }
+                else if (value == "help"){
+                    window.location.href = "https://github.com/JayGgit";
+                }
+                else if (value == "donate"){
+                    window.location.href = "https://jayggit.github.io/donate"
+                }
+                else if (value == "beta"){
+                    window.location.href = "https://jayggit.github.io/index0.html"
+                }
+                else {
+                    window.location.href = ((location.protocol + '//' + location.host + location.pathname) + "?error=" + encodeURI(input.value))
+                }
+            }
+        });
+        var agent = window.navigator.userAgent.toLowerCase()
+        // Maximum resolution 1440px width, below should redirect to GUI based website
+        if (screen.width < 1440){
+            document.getElementById("reason").innerHTML = "Reason: Using a mobile device, or a low screen resolution"
+        }
+        else if (agent.includes("Safari")) {
+            document.getElementById("reason").innerHTML = "Reason: Using Safari"
+        }
+        else if (window.document.documentMode){ // window.document.documentMode means user is using IE for some reason...
+            document.getElementById("reason").innerHTML = "Reason: Using Internet Explorer. Why?"
+        }
+        else {
+            document.getElementById("warngui").style.display = "none"
+        }
+        function hidewarn(){
+            document.getElementById("warngui").style.display = "none"
+        }
+    </script>
+</html>

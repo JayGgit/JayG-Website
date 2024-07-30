@@ -103,6 +103,13 @@
             display: flex;
             justify-content: center;
         }
+        .konami {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
     </style>
         
     <body>
@@ -115,5 +122,122 @@
                 <a role="button" href="https://twitter.com/JayGTypes">X <svg role="presentation" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </div>
         </main>
+        <img class="konami" alt="up" src="img/up.svg" width="100px" height="100px" id="up">
+        <img class="konami" alt="down" src="img/down.svg" width="100px" height="100px" id="down">
+        <img class="konami" alt="left" src="img/left.svg" width="100px" height="100px" id="left">
+        <img class="konami" alt="right" src="img/right.svg" width="100px" height="100px" id="right">
+        <img class="konami" alt="a" src="img/a.svg" width="100px" height="100px" id="a">
+        <img class="konami" alt="b" src="img/b.svg" width="100px" height="100px" id="b">
+        <img class="konami" alt="enter" src="img/enter.svg" width="100px" height="100px" id="enter">
     </body>
+    <script>
+        var seq = 0;
+        document.addEventListener("keydown", logKey);
+
+        function logKey(e) {
+            console.log(e.key)
+            if (seq === 0){
+                if (e.key === "ArrowUp"){
+                    seq = 1
+                }
+            }
+            else if (seq === 1){
+                if (e.key === "ArrowUp"){
+                    seq = 2
+                }
+            }
+            else if (seq === 2){
+                if (e.key === "ArrowDown"){
+                    seq = 3
+                }
+            }
+            else if (seq === 3){
+                if (e.key === "ArrowDown"){
+                    seq = 4
+                }
+            }
+            else if (seq === 4){
+                if (e.key === "ArrowLeft"){
+                    seq = 5
+                }
+            }
+            else if (seq === 5){
+                if (e.key === "ArrowRight"){
+                    seq = 6
+                }
+            }
+            else if (seq === 6){
+                if (e.key === "ArrowLeft"){
+                    seq = 7
+                }
+            }
+            else if (seq === 7){
+                if (e.key === "ArrowRight"){
+                    seq = 8
+                }
+            }
+            else if (seq === 8){
+                if (e.key === "b"){
+                    seq = 9
+                }
+            }
+            else if (seq === 9){
+                if (e.key === "a"){
+                    seq = 10
+                }
+            }
+            else if (seq === 10){
+                if (e.key === "Enter"){
+                    seq = 11
+                    location.href("jayg.top/oldindex.html")
+                }
+            }
+            else {
+                seq = 0
+                console.log("Incorrect sequence, try again.")
+            }
+            if (e.key === "ArrowUp") {
+                document.getElementById("up").style.display = "inline"
+                setTimeout(function () {
+                    document.getElementById("up").style.display = "none"
+                }, 100);
+            }
+            if (e.key === "ArrowDown") {
+                document.getElementById("down").style.display = "inline"
+                setTimeout(function () {
+                    document.getElementById("down").style.display = "none"
+                }, 100);
+            }
+            if (e.key === "ArrowLeft") {
+                document.getElementById("left").style.display = "inline"
+                setTimeout(function () {
+                    document.getElementById("left").style.display = "none"
+                }, 100);
+            }
+            if (e.key === "ArrowRight") {
+                document.getElementById("right").style.display = "inline"
+                setTimeout(function () {
+                    document.getElementById("right").style.display = "none"
+                }, 100);
+            }
+            if (e.key === "a") {
+                document.getElementById("a").style.display = "inline"
+                setTimeout(function () {
+                    document.getElementById("a").style.display = "none"
+                }, 100);
+            }
+            if (e.key === "b") {
+                document.getElementById("b").style.display = "inline"
+                setTimeout(function () {
+                    document.getElementById("b").style.display = "none"
+                }, 100);
+            }
+            if (e.key === "Enter") {
+                document.getElementById("enter").style.display = "inline"
+                setTimeout(function () {
+                    document.getElementById("enter").style.display = "none"
+                }, 100);
+            }
+        }
+    </script>
 </html>
